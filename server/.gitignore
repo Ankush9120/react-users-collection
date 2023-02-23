@@ -3,3 +3,6 @@ node_modules
 .env
 # Local Netlify folder
 .netlify
+
+"netlify-cli": "^13.0.0",
+"netlify-lambda": "^2.0.16",
