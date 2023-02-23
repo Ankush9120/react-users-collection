@@ -12,7 +12,7 @@ const Logout = () => {
 
     useEffect(()=>{
 
-        fetch('https://boisterous-mochi-ee786e.netlify.app/.netlify/functions/server/logout' , {
+        fetch('https://react-users-collection.onrender.com/logout' , {
             method: "GET",
             headers: {
                 'Content-Type' : 'application/json'

@@ -12,7 +12,7 @@ const Login = () => {
   
   const userLogin = async (e) =>{
     e.preventDefault()
-    const res = await fetch('https://boisterous-mochi-ee786e.netlify.app/.netlify/functions/server/login',{
+    const res = await fetch('https://react-users-collection.onrender.com/login',{
       method : "POST" ,
       headers : {
         "Content-Type" : "application/json",
