@@ -1,11 +1,15 @@
 require('dotenv').config();
 const express = require("express");
+const cors = require('cors')
 // const serverless = require("serverless-http");
 const cookieParser = require("cookie-parser");
 const app = express();
 const router = express.Router();
 
+app.use(cors());
 router.use(cookieParser());
+// Taking permission from express to accept JSON data otherwise it will be undefined
+router.use(express.json());
 
 const PORT = process.env.REACT_APP_PORT || 5000;
 
@@ -142,9 +146,6 @@ userSchema.methods.addMessage = async function (name, email, phone, message) {
 
 // Creating new Collection User with help of - MODELS
 const User = new mongoose.model("User", userSchema);
-
-// Taking permission from express to accept JSON data otherwise it will be undefined
-router.use(express.json());
 
 // Register USER
 
