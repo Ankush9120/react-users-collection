@@ -12,7 +12,7 @@ const About = () => {
 
     try{
 
-      const res = await fetch('/about' , {
+      const res = await fetch('https://boisterous-mochi-ee786e.netlify.app/.netlify/functions/server/about' , {
         method : 'GET' ,
         headers : {
           Accept : 'application/json',

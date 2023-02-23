@@ -7,7 +7,7 @@ const Home = () => {
 
   const loadHomePage = async () => {
     try {
-      const res = await fetch("/getdata", {
+      const res = await fetch("https://boisterous-mochi-ee786e.netlify.app/.netlify/functions/server/getdata", {
         method: "GET",
         headers: {
           "Content-Type": "application/json",

@@ -7,7 +7,7 @@ const Contact = () => {
 
   const loadContactPage = async () => {
     try {
-      const res = await fetch("/api/getdata", {
+      const res = await fetch("https://boisterous-mochi-ee786e.netlify.app/.netlify/functions/server/getdata", {
         method: "GET",
         headers: {
           "Content-Type": "application/json",

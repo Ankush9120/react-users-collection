@@ -14,7 +14,7 @@ const Register = () => {
 
   const postReg = async (e)=>{
     e.preventDefault()
-    const res = await fetch('/register' , {
+    const res = await fetch('https://boisterous-mochi-ee786e.netlify.app/.netlify/functions/server/register' , {
       method: "POST" ,
       headers : {
         "Content-Type" : "application/json"
