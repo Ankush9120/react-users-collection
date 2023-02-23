@@ -1,0 +1,67 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap');
+
+*{ 
+    margin: 0;
+    padding: 0;
+    user-select: none;
+    font-family: 'Poppins', sans-serif;
+    outline: none;
+}
+:root{
+    --blue : rgb(51, 151, 250) ;
+}
+nav .active , nav .active:hover{
+    background: var(--blue);
+    color: white;
+}
+
+.myContainer > div{
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+}
+
+.myContainer nav + div {
+    flex-grow: 1;
+    display: grid;
+    place-items: center;
+}
+
+.registerBox , .loginBox{
+    width: 400px;
+    box-shadow: 0 5px 15px rgb(0 0 0/0.2);
+    border-radius: 8px;
+    padding: 30px;
+    text-align: center;
+}
+
+.registerBox input , .loginBox input , .contactForm input , textarea{
+    border: 1px solid rgb(0 0 0/0.2);
+    padding: 5px 15px;
+    margin-bottom: 20px;
+    width: 80%;
+    text-align: center;   
+    font-size: 14px;
+}
+.registerBox input:focus , .loginBox input:focus{
+    border: 1px solid var(--blue);
+}
+
+.registerBox input:focus::placeholder , .loginBox input:focus::placeholder{
+    color: var(--blue);
+}
+
+.submitBtn{
+    background: var(--blue) !important;
+    color: white;
+}
+
+.submitBtn:hover{
+    background: rgb(51, 151, 200) !important;
+}
+
+/* About PAGE CSS  */
+
+.aboutBox{
+    height: 400px;
+}
