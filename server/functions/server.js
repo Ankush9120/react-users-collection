@@ -1,13 +1,15 @@
+require('dotenv').config();
 const express = require("express");
-const serverless = require("serverless-http");
+// const serverless = require("serverless-http");
 const cookieParser = require("cookie-parser");
 const app = express();
 const router = express.Router();
 
 router.use(cookieParser());
-require('dotenv').config();
 
-// const port = process.env.REACT_APP_PORT || 5000;
+const PORT = process.env.REACT_APP_PORT || 5000;
+
+app.use(router)
 
 // ROUTING PAGES
 
@@ -19,16 +21,18 @@ router.get("/home", (req, res) => {
   res.send("Hello Home");
 });
 
-// router.listen(port, console.log("Server Started"));
+app.listen(PORT, console.log(`Server Started at ${PORT}`));
 
 // Connection To DATA BASE
 
 const mongoose = require("mongoose");
 
-
-const db = process.env.REACT_APP_DB;
+// const db = process.env.REACT_APP_DB;
+const db = "mongodb+srv://Ankush9120:9120887878@cluster0.9tcj5v0.mongodb.net/?retryWrites=true&w=majority";
+console.log(db)
 
 mongoose.set("strictQuery", true);
+
 mongoose
   .connect(db)
   .then(() => {
@@ -303,5 +307,5 @@ router.get('/api/logout' ,(req,res)=>{
 //   router.use(express.static("./dist"))
 // }
 
-app.use('/.netlify/functions/server' , router);
-module.exports.handler = serverless(app);
+// app.use('/.netlify/functions/server' , router);
+// module.exports.handler = serverless(app);
