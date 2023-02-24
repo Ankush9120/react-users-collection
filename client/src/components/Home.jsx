@@ -9,6 +9,7 @@ const Home = () => {
     try {
       const res = await fetch("https://react-users-collection.onrender.com/home", {
         method: "GET",
+        mode: 'cors',
         headers: {
           "Content-Type": "application/json",
         },
