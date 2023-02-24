@@ -21,7 +21,7 @@ router.get("/", (req, res) => {
   res.send("Welcome");
 });
 
-router.get("api/home", (req, res) => {
+router.get("/api/home", (req, res) => {
   res.send("Hello Home");
 });
 
@@ -180,7 +180,7 @@ router.post("/register", async (req, res) => {
 
 // LOGIN USER
 
-router.post("api/login", async (req, res) => {
+router.post("/api/login", async (req, res) => {
   try {
     const { email, password } = req.body;
     if (!email || !password) {
