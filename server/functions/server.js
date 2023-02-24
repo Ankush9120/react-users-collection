@@ -6,7 +6,8 @@ const cookieParser = require("cookie-parser");
 const app = express();
 const router = express.Router();
 
-app.use(cors());
+router.use(cors());
+
 router.use(cookieParser());
 // Taking permission from express to accept JSON data otherwise it will be undefined
 router.use(express.json());
