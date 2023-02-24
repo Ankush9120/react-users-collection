@@ -180,7 +180,7 @@ router.post("/register", async (req, res) => {
 
 // LOGIN USER
 
-router.post("/api/login", async (req, res) => {
+router.post("/login", async (req, res) => {
   try {
     const { email, password } = req.body;
     if (!email || !password) {
@@ -256,7 +256,7 @@ const authenticate = async (req, res, next) => {
 
 // ABOUT PAGE
 
-router.get("/api/about", authenticate, (req, res) => {
+router.get("/about", authenticate, (req, res) => {
   // Sending Root User Request to Front-End
 
   res.send(req.rootUser);
@@ -265,7 +265,7 @@ router.get("/api/about", authenticate, (req, res) => {
 
 // Getting User Details for Contact Us & Home Page
 
-router.get("/api/getdata", authenticate, (req, res) => {
+router.get("/getdata", authenticate, (req, res) => {
   // Sending Root User Request to Front-End
   res.send(req.rootUser);
   console.log("Data request sent to front-end : ");
@@ -273,7 +273,7 @@ router.get("/api/getdata", authenticate, (req, res) => {
 
 //Getting Contact Us Data & storing in DB
 
-router.post("/api/contact", authenticate, async (req, res) => {
+router.post("/contact", authenticate, async (req, res) => {
   try {
     console.log("Getting data of contact from front end");
     const { name, email, phone, message } = req.body;
@@ -297,7 +297,7 @@ router.post("/api/contact", authenticate, async (req, res) => {
 });
 
 
-router.get('/api/logout' ,(req,res)=>{
+router.get('/logout' ,(req,res)=>{
   console.log("Log out request recieved")
   res.clearCookie('jwtoken' , {path : '/'})
   res.status(200).send({message : "Logout Succesfully"})
