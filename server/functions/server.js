@@ -125,7 +125,7 @@ const jwtkey = process.env.REACT_APP_JWT
 userSchema.methods.generateAuthToken = async function () {
   try {
     let token = jwt.sign(
-      { id: this._id }, jwtkey
+      { id: this._id }, "REACT_APP_JWT=HelloMyNameIsAnkushGuptaAndMyBranchIsMCA"
     );
     this.tokens = this.tokens.concat({ token: token });
     await this.save();
@@ -207,7 +207,7 @@ router.post("/login", async (req, res) => {
         
         res.cookie("jwtoken", token , {
           expires: new Date(Date.now() + 10000000),
-          httpOnly: true
+          secure: true
         });
 
         // Cookies.set('jwtoken' , token)
