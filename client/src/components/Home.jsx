@@ -7,7 +7,7 @@ const Home = () => {
 
   const loadHomePage = async () => {
     try {
-      const res = await fetch("https://react-users-collection.onrender.com/api/home", {
+      const res = await fetch("https://react-users-collection.onrender.com/home", {
         method: "GET",
         headers: {
           "Content-Type": "application/json",
