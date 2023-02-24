@@ -1,16 +1,18 @@
 require('dotenv').config();
 const express = require("express");
-const cors = require('cors')
 // const serverless = require("serverless-http");
 const cookieParser = require("cookie-parser");
 const app = express();
 const router = express.Router();
+const cors = require('cors')
 
 app.use(router)
 app.use(cors({
   origin: 'https://react-users-collection.onrender.com',
-  methods: 'GET,POST'
+  methods: ["GET","POST"]
 }));
+
+console.log(cors)
 
 router.use(cookieParser());
 // Taking permission from express to accept JSON data otherwise it will be undefined
