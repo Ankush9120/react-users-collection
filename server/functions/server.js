@@ -4,22 +4,16 @@ const express = require("express");
 const cookieParser = require("cookie-parser");
 const app = express();
 const router = express.Router();
-const cors = require('cors')
+// const cors = require('cors')
 
 app.use(router)
-app.use(cors({
-  origin: 'https://react-users-collection.onrender.com',
-  methods: ["GET","POST"]
-}));
-
-// Disable CORS
-// app.use(function(req, res, next) {
-//   res.header("Access-Control-Allow-Origin", "*");
-//   res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
-//   next();
-// });
+// app.use(cors({
+//   origin: ['http://localhost:5000' , 'https://react-users-collection.onrender.com'],
+//   methods: ["GET","POST"],
+// }));
 
 router.use(cookieParser());
+
 // Taking permission from express to accept JSON data otherwise it will be undefined
 router.use(express.json());
 

@@ -14,13 +14,14 @@ const Login = () => {
     e.preventDefault()
     const res = await fetch('https://react-users-collection.onrender.com/login',{
       method : "POST" ,
+      mode: 'no-cors',
       headers : {
         "Content-Type" : "application/json",
       },
       body : JSON.stringify({email,password})
     })
     const data = await res.json()
-
+    
     if(res.status === 201){
       // sending true value to state when login 
       dispatch({type : "USER" , payload:true})
