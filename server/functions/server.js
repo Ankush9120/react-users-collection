@@ -125,7 +125,7 @@ const jwtkey = process.env.REACT_APP_JWT
 userSchema.methods.generateAuthToken = async function () {
   try {
     let token = jwt.sign(
-      { id: this._id }, "REACT_APP_JWT=HelloMyNameIsAnkushGuptaAndMyBranchIsMCA"
+      { id: this._id }, "HelloMyNameIsAnkushGuptaAndMyBranchIsMCA"
     );
     this.tokens = this.tokens.concat({ token: token });
     await this.save();
