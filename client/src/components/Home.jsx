@@ -7,15 +7,16 @@ const Home = () => {
 
   const loadHomePage = async () => {
     try {
-      const res = await fetch("https://react-users-collection.onrender.com/home", {
+      const res = await fetch("https://react-users-collection.onrender.com/getdata", {
         method: "GET",
-        mode: 'no-cors',
         headers: {
           "Content-Type": "application/json",
         },
       });
 
       const data = await res.json();
+
+      console.log(name)
 
       setName(data.name);
 

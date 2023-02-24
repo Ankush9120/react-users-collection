@@ -6,22 +6,28 @@ import {UserContext} from '../App'
 const Login = () => {
   const {state,dispatch} = useContext(UserContext)
 
-  const [email , setEmail] = useState("")
-  const [password , setPassword] = useState("")
+  const [email , setEmail] = useState("ankushgupta9120@gmail.com")
+  const [password , setPassword] = useState("1234")
   const navigate = useNavigate()
   
   const userLogin = async (e) =>{
     e.preventDefault()
+
     const res = await fetch('https://react-users-collection.onrender.com/login',{
       method : "POST" ,
-      mode: 'no-cors',
+      // mode: 'cors',
       headers : {
         "Content-Type" : "application/json",
       },
+      credentials : "include",
       body : JSON.stringify({email,password})
     })
+
+    
     const data = await res.json()
     
+    console.log(data)
+
     if(res.status === 201){
       // sending true value to state when login 
       dispatch({type : "USER" , payload:true})

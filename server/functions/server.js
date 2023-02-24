@@ -1,23 +1,21 @@
 require('dotenv').config();
 const express = require("express");
-// const serverless = require("serverless-http");
 const cookieParser = require("cookie-parser");
 const app = express();
 const router = express.Router();
-// const cors = require('cors')
+const cors = require('cors')
+// const Cookies = require('js-cookie')
+
+app.use(cors());
+app.use(cookieParser());
 
 app.use(router)
-// app.use(cors({
-//   origin: ['http://localhost:5000' , 'https://react-users-collection.onrender.com'],
-//   methods: ["GET","POST"],
-// }));
 
-router.use(cookieParser());
 
 // Taking permission from express to accept JSON data otherwise it will be undefined
 router.use(express.json());
 
-const PORT = process.env.REACT_APP_PORT || 5000;
+const PORT = 5000;
 
 
 // ROUTING PAGES
@@ -131,6 +129,7 @@ userSchema.methods.generateAuthToken = async function () {
     );
     this.tokens = this.tokens.concat({ token: token });
     await this.save();
+    console.log("Token created and saved in DB")
     return token;
   } catch (err) {
     console.log(err);
@@ -186,8 +185,10 @@ router.post("/register", async (req, res) => {
 // LOGIN USER
 
 router.post("/login", async (req, res) => {
+
   try {
     const { email, password } = req.body;
+
     if (!email || !password) {
       res.send({ message: "Fill all the Credentials" });
     }
@@ -198,18 +199,24 @@ router.post("/login", async (req, res) => {
       const userPass = await bcrypt.compare(password, userLogin.password);
 
       if (userPass) {
+
         // Generating Auth Token
         const token = await userLogin.generateAuthToken();
-
+        
         // storing token in cookie
-        res.cookie("jwtoken", token, {
-          // Adding expire time of user in ms
+        
+        res.cookie("jwtoken", token , {
           expires: new Date(Date.now() + 10000000),
-          httpOnly: true,
+          httpOnly: true
         });
+
+        // Cookies.set('jwtoken' , token)
+
         console.log("Your Token is : ", token);
+
         console.log(req.body);
-        return res.status(201).send({ message: "Login successfully" });
+        
+        res.status(201).send({ message: "Login successfully" });
       } else {
         res.send({ message: "Inavlid Details - Pass" });
       }
@@ -222,14 +229,16 @@ router.post("/login", async (req, res) => {
 
 });
 
-// VERIFYING User WEB Token using MIddle WARE for About Page
+
+// Authentication of WEB Token
 
 const authenticate = async (req, res, next) => {
   try {
     console.log("Entered in Authentication");
 
     // get jwt token from cookies
-    const token = req.cookies.jwtoken;
+    const token = req.cookie.jwtoken;
+    // const token = Cookies.get('jwtoken')
 
     // Verifying our token with secret key
     const verifyToken = jwt.verify(
@@ -270,10 +279,13 @@ router.get("/about", authenticate, (req, res) => {
 
 // Getting User Details for Contact Us & Home Page
 
-router.get("/getdata", authenticate, (req, res) => {
+router.get("/getdata", authenticate ,(req, res) => {
   // Sending Root User Request to Front-End
+
   res.send(req.rootUser);
-  console.log("Data request sent to front-end : ");
+  console.log(rootUser)
+  console.log(req.rootUser)
+  res.send(console.log("Data Sent To FrontEND"))
 });
 
 //Getting Contact Us Data & storing in DB
@@ -307,11 +319,3 @@ router.get('/logout' ,(req,res)=>{
   res.clearCookie('jwtoken' , {path : '/'})
   res.status(200).send({message : "Logout Succesfully"})
 })
-
-
-// if(process.env.REACT_APP_NODE_ENV == ""){
-//   router.use(express.static("./dist"))
-// }
-
-// app.use('/.netlify/functions/server' , router);
-// module.exports.handler = serverless(app);
