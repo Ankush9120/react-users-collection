@@ -6,7 +6,11 @@ const cookieParser = require("cookie-parser");
 const app = express();
 const router = express.Router();
 
-router.use(cors());
+app.use(router)
+app.use(cors({
+  origin: 'https://react-users-collection.onrender.com',
+  methods: 'GET,POST'
+}));
 
 router.use(cookieParser());
 // Taking permission from express to accept JSON data otherwise it will be undefined
@@ -14,7 +18,6 @@ router.use(express.json());
 
 const PORT = process.env.REACT_APP_PORT || 5000;
 
-app.use(router)
 
 // ROUTING PAGES
 
