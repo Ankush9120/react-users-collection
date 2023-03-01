@@ -9,7 +9,6 @@ const Home = () => {
     try {
       const res = await fetch("https://react-users-collection.onrender.com/getdata", {
         method: "GET",
-        credentials: 'include' ,
         headers: {
           "Content-Type": "application/json",
         },

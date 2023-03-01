@@ -6,7 +6,7 @@ const router = express.Router();
 const cors = require('cors')
 // const Cookies = require('js-cookie')
 var  corsOptions  = {
-origin: 'https://react-users-collection.netlify.app/', //frontend url
+origin: 'https://react-users-collection.netlify.app', //frontend url
 credentials: true}
 
 app.use(cors(corsOptions));

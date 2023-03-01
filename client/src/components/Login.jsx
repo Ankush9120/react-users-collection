@@ -16,7 +16,7 @@ const Login = () => {
     const res = await fetch('https://react-users-collection.onrender.com/login',{
       method : "POST" ,
       credentials: 'include' ,
-      // mode: 'cors',
+      mode: 'cors',
       headers : {
         "Content-Type" : "application/json",
       },
