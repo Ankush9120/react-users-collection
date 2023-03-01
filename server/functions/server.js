@@ -5,12 +5,24 @@ const app = express();
 const router = express.Router();
 const cors = require('cors')
 // const Cookies = require('js-cookie')
+var  corsOptions  = {
+origin: 'https://react-users-collection.netlify.app', //frontend url
+credentials: true}
 
-app.use(cors());
+app.use(cors(corsOptions));
+
 app.use(cookieParser());
 
 app.use(router)
 
+router.use(function (req, res, next) {
+  res.setHeader('Access-Control-Allow-Origin', '*');
+  res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');
+  res.setHeader('Access-Control-Allow-Headers', 'Origin,X-Requested-With,content-type,set-cookie');
+  res.setHeader('Access-Control-Allow-Credentials', true);
+
+   next();
+});
 
 // Taking permission from express to accept JSON data otherwise it will be undefined
 router.use(express.json());
@@ -46,6 +58,7 @@ mongoose
     console.log("DB connection stablished");
   })
   .catch((err) => console.log(err));
+
 
 // SCHEMA - SCHEMA Defines The Structure of the Document
 
