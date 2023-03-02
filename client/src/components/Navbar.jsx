@@ -1,7 +1,6 @@
 import React, { useContext } from "react";
 import { NavLink } from "react-router-dom";
 import { UserContext } from "../App";
-import Logout from "../functions/Logout";
 
 const Navbar = () => {
   const { state, dispatch } = useContext(UserContext);
@@ -50,9 +49,9 @@ const Navbar = () => {
           </NavLink>
         </li>
         
-        <li onClick={Logout} hidden={state ? "" : "hidden"}>
+        <li hidden={state ? "" : "hidden"}>
           <NavLink
-            // to="/logout"
+            to="/logout"
             className="bg-gray-200 p-1 px-3 rounded-md hover:bg-gray-300 cursor-pointer"
           >
             Logout
