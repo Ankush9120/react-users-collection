@@ -5,7 +5,7 @@ import Login from './Login'
 import About from './About'
 import Register from './Register'
 import Contact from './Contact'
-import Logout from './Logout'
+import Logout from '../functions/Logout'
 import Error from './Error'
 
 const MyRouter = () => {
@@ -18,7 +18,7 @@ const MyRouter = () => {
             <Route path="/about" element={<About />} />
             <Route path="/register" element={<Register />} />
             <Route path="/contact" element={<Contact />} />
-            <Route path="/logout" element={<Logout />} />
+            // <Route path="/logout" element={<Logout />} />
             <Route path="*" element={<Error />} />
         </Route>
       </Routes>
