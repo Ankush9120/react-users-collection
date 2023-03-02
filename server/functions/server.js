@@ -4,25 +4,19 @@ const cookieParser = require("cookie-parser");
 const app = express();
 const router = express.Router();
 const cors = require('cors')
-// const Cookies = require('js-cookie')
-var  corsOptions  = {
-origin: 'https://react-users-collection.netlify.app', //frontend url
-credentials: true}
 
-app.use(cors(corsOptions));
+app.use(cors({
+  origin: function(origin, callback){
+    return callback(null, true);
+  },
+  optionsSuccessStatus: 200,
+  credentials: true
+}));
 
 app.use(cookieParser());
 
 app.use(router)
 
-router.use(function (req, res, next) {
-  res.setHeader('Access-Control-Allow-Origin', '*');
-  res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');
-  res.setHeader('Access-Control-Allow-Headers', 'Origin,X-Requested-With,content-type,set-cookie');
-  res.setHeader('Access-Control-Allow-Credentials', true);
-
-   next();
-});
 
 // Taking permission from express to accept JSON data otherwise it will be undefined
 router.use(express.json());
@@ -48,7 +42,6 @@ const mongoose = require("mongoose");
 
 // const db = process.env.REACT_APP_DB;
 const db = "mongodb+srv://Ankush9120:9120887878@cluster0.9tcj5v0.mongodb.net/?retryWrites=true&w=majority";
-console.log(db)
 
 mongoose.set("strictQuery", true);
 
@@ -250,7 +243,8 @@ const authenticate = async (req, res, next) => {
     console.log("Entered in Authentication");
 
     // get jwt token from cookies
-    const token = req.cookie.jwtoken;
+    const token = req.cookies.jwtoken;
+
     // const token = Cookies.get('jwtoken')
 
     // Verifying our token with secret key
