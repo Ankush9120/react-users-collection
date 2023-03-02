@@ -2,12 +2,12 @@ import React, { useEffect, useState } from "react";
 import { toast } from "react-toastify";
 
 const Home = () => {
-  
+
   const [name , setName] = useState("");
 
   const loadHomePage = async () => {
     try {
-      const res = await fetch("https://react-users-collection.onrender.com/getdata", {
+      const res = await fetch("http://localhost:5000/getdata", {
         method: "GET",
         credentials: 'include' ,
         headers: {

@@ -1,8 +1,10 @@
 import React, { useState } from "react";
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import {toast } from "react-toastify";
 
 const Register = () => {
+  const navigate = useNavigate();
+
   const [userData , setUserData] = useState({name:"" ,email:"",phone:"",password:"",cpassword:""})
 
   const storeUser = (e)=>{
@@ -28,6 +30,7 @@ const Register = () => {
     }
     else{
       toast.success(data.message)
+      navigate("/login")
     }
 
   }

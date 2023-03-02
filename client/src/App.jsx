@@ -4,6 +4,7 @@ import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { createContext , useReducer } from 'react';
 
+// Reducer Function
 
 const initialState = null ;
 const reducer = (state,action) =>{
@@ -21,7 +22,6 @@ const App = ()=> {
     
   const [state, dispatch] = useReducer(reducer,initialState)
 
-  
   return (
     <div className='myContainer'>
       <UserContext.Provider value={{state,dispatch}}>

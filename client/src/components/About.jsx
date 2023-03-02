@@ -10,9 +10,10 @@ const About = () => {
   const loadAboutPage = async () => {
     try {
       const res = await fetch(
-        "https://react-users-collection.onrender.com/about",
+        "http://localhost:5000/about",
         {
           method: "GET",
+          credentials: 'include' ,
           headers: {
             Accept: "application/json",
             "Content-Type": "application/json",

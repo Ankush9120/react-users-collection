@@ -281,7 +281,6 @@ router.get("/about", authenticate, (req, res) => {
   // Sending Root User Request to Front-End
 
   res.send(req.rootUser);
-  console.log("about request sent to front-end : ");
 });
 
 // Getting User Details for Contact Us & Home Page
@@ -290,7 +289,6 @@ router.get("/getdata", authenticate ,(req, res) => {
   // Sending Root User Request to Front-End
 
   res.send(req.rootUser);
-  console.log(rootUser)
   console.log(req.rootUser)
   res.send(console.log("Data Sent To FrontEND"))
 });
@@ -322,7 +320,6 @@ router.post("/contact", authenticate, async (req, res) => {
 
 
 router.get('/logout' ,(req,res)=>{
-  console.log("Log out request recieved")
   res.clearCookie('jwtoken' , {path : '/'})
   res.status(200).send({message : "Logout Succesfully"})
 })
