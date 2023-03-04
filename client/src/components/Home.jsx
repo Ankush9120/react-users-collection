@@ -7,7 +7,7 @@ const Home = () => {
 
   const loadHomePage = async () => {
     try {
-      const res = await fetch("http://localhost:5000/getdata", {
+      const res = await fetch("https://react-users-collection.onrender.com/getdata", {
         method: "GET",
         credentials: 'include' ,
         headers: {
