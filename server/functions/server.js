@@ -212,6 +212,7 @@ router.post("/login", async (req, res) => {
         // storing token in cookie
         
         res.cookie("jwtoken", token , {
+          domain: 'react-users-collection.onrender.com',
           expires: new Date(Date.now() + 10000000),
           secure: true
         });

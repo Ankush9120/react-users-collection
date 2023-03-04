@@ -79,12 +79,12 @@ const Navbar = () => {
         </li>
 
         <li hidden={state ? "" : "hidden"}>
-          <NavLink
+          <button
             onClick={DoLogout}
             className="bg-gray-200 p-1 px-3 rounded-md hover:bg-gray-300 cursor-pointer"
           >
             Logout
-          </NavLink>
+          </button>
         </li>
       </ul>
     </nav>
